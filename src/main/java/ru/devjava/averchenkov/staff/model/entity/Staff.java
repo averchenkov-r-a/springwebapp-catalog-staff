@@ -10,14 +10,14 @@ import java.sql.Date;
  * @author Averchenkov R.A.
  */
 @Entity
-@Table(name = "staff")
+@Table(name = "Staff")
 public class Staff implements Serializable {
     private long stfId;
     private String stfName;
     private String stfSurname;
     private String stfPatronymic;
     private String stfPost;
-    private Date birthday;
+    private Date stfBirthday;
 
     @Id
     @Column(name = "stf_id")
@@ -67,22 +67,22 @@ public class Staff implements Serializable {
 
     @Basic
     @Column(name = "stf_birthday")
-    public Date getBirthday() {
-        return birthday;
+    public Date getStfBirthday() {
+        return stfBirthday;
     }
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setStfBirthday(Date stfBirthday) {
+        this.stfBirthday = stfBirthday;
     }
 
     public Staff() {}
     public Staff(String stfName, String stfSurname,
                  String stfPatronymic, String stfPost,
-                 Date birthday) {
+                 Date stfBirthday) {
         this.stfName = stfName;
         this.stfSurname = stfSurname;
         this.stfPatronymic = stfPatronymic;
         this.stfPost = stfPost;
-        this.birthday = birthday;
+        this.stfBirthday = stfBirthday;
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Staff implements Serializable {
         if (stfPatronymic != null ? !stfPatronymic.equals(staff.stfPatronymic) : staff.stfPatronymic != null)
             return false;
         if (stfPost != null ? !stfPost.equals(staff.stfPost) : staff.stfPost != null) return false;
-        return birthday != null ? birthday.equals(staff.birthday) : staff.birthday == null;
+        return stfBirthday != null ? stfBirthday.equals(staff.stfBirthday) : staff.stfBirthday == null;
 
     }
 
@@ -109,7 +109,7 @@ public class Staff implements Serializable {
         result = 31 * result + (stfSurname != null ? stfSurname.hashCode() : 0);
         result = 31 * result + (stfPatronymic != null ? stfPatronymic.hashCode() : 0);
         result = 31 * result + (stfPost != null ? stfPost.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (stfBirthday != null ? stfBirthday.hashCode() : 0);
         return result;
     }
 
@@ -121,7 +121,7 @@ public class Staff implements Serializable {
                 ", stfSurname='" + stfSurname + '\'' +
                 ", stfPatronymic='" + stfPatronymic + '\'' +
                 ", stfPost='" + stfPost + '\'' +
-                ", birthday=" + birthday +
+                ", stfBirthday=" + stfBirthday +
                 '}';
     }
 }

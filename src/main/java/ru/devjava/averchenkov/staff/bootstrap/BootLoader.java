@@ -26,11 +26,11 @@ public class BootLoader implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Staff staff1 = new Staff(
-                "Литвинов",
                 "Виктор",
+                "Литвинов",
                 "Сергеевич",
                 "программист",
-                Date.valueOf(LocalDate.of(1900, 10, 11))
+                Date.valueOf(LocalDate.of(1994, 11, 25))
         );
 
         Staff staff2 = new Staff(
@@ -38,15 +38,15 @@ public class BootLoader implements ApplicationListener<ContextRefreshedEvent> {
                 "Подубный",
                 "Андреевич",
                 "ст. инженер",
-                Date.valueOf(LocalDate.of(1900, 10, 11))
+                Date.valueOf(LocalDate.of(1985, 2, 10))
         );
 
         Staff staff3 = new Staff(
+                "Иван",
                 "Лукин",
-                "Антон",
                 "Александрович",
                 "ст. инженер",
-                Date.valueOf(LocalDate.of(1900, 10, 11))
+                Date.valueOf(LocalDate.of(1987, 6, 19))
         );
 
         staffService.saveStaff(staff1);
