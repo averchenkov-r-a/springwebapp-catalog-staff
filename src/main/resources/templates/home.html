@@ -2,8 +2,87 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous"/>
+
+        <link rel="stylesheet"
+              href="/static/css/bootstrap-select.min.css"/>
+
+        <link rel="stylesheet" href="/static/css/custom.css"/>
     </head>
-    <body>
-        Hello World HTML!
+    <body ng-app="myApp" class="ng-cloak">
+        <div class="container">
+            <div ng-controller="StaffController as ctrl">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span class="lead">Список сотрудников</span><br/>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <select class="selectpicker">
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Поиск..." class="form-control"/>
+                                        <span class="input-group-btn">
+                                          <button class="btn btn-default" type="button">Найти</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tablecontainer">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Имя</th>
+                                    <th>Фамилия</th>
+                                    <th>Отчество</th>
+                                    <th>Должность</th>
+                                    <th>День рождения</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="s in ctrl.staffs">
+                                        <td><span ng-bind="s.stfId"></span></td>
+                                        <td><span ng-bind="s.stfName"></span></td>
+                                        <td><span ng-bind="s.stfSurname"></span></td>
+                                        <td><span ng-bind="s.stfPatronymic"></span></td>
+                                        <td><span ng-bind="s.stfPost"></span></td>
+                                        <td><span ng-bind="s.stfBirthday"></span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <ul class="pager panel-pages">
+                        <li class="previous"><a href="#" ng-click="ctrl.flipped(self.page - 1);">&larr; Предыдущая страница</a></li>
+                        <li class="next"><a href="#" ng-click="ctrl.flipped(self.page + 1);">Следующая страница &rarr;</a></li>
+                    </ul>
+                    <ul class="pagination panel-pages">
+                        <li ng-repeat="p in ctrl.pages" class="{{ (this.p.select) ? 'active' : ''}}"><a ng-bind="p.number" href="#" ng-click="ctrl.flipped(this.p.number - 1);"></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+
+        <script src="/static/js/libs/jquery-3.1.0.min.js"></script>
+        <script src="/static/js/libs/angular.min.js"></script>
+        <script src="/static/js/app.js"></script>
+        <script src="/static/js/service/staff_service.js"></script>
+        <script src="/static/js/controller/staff_controller.js"></script>
+        <script src="/static/js/libs/bootstrap.min.js"></script>
+        <script src="/static/js/libs/bootstrap-select.min.js"></script>
     </body>
 </html>

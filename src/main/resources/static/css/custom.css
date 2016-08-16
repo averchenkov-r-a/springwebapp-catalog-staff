@@ -1,0 +1,12 @@
+.panel-pages{
+    margin: 10px 0;
+}
+
+.search-panel{
+    float: right!important;
+    margin-top: 0px;
+}
+
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100%;
+}

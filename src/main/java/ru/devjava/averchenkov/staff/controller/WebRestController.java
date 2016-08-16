@@ -37,7 +37,7 @@ public class WebRestController {
 
     @RequestMapping(value = "/find/staff/id", method = { RequestMethod.GET, RequestMethod.POST })
     public Page<Staff> staffById(@RequestParam(value = "id", required = false) String stfId){
-        logger.info("Request [/staff] arg: id='{}'", stfId);
+        logger.info("Request [/find/staff/id] arg: id='{}'", stfId);
         return staffService.getStaffById(stfId);
     }
 

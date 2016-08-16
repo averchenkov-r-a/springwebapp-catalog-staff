@@ -26,13 +26,6 @@
     </parent>
 
     <dependencies>
-        <!-- Other -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
         <!-- Log -->
         <dependency>
             <groupId>ch.qos.logback</groupId>

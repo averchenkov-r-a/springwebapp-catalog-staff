@@ -159,7 +159,9 @@ public class StaffService implements IStaffService {
                 new PageRequest(page, count,
                         new Sort(Sort.Direction.ASC, stfColumn != null ? stfColumn : "stfId")));
 
-        logger.debug("[getStaff by {}] return {} values.", stfColumn, staffs.getSize());
+        logger.debug("[getStaff by {}] return {} values.",
+                stfColumn != null ? stfColumn : "all",
+                staffs.getSize());
         return staffs;
     }
 
