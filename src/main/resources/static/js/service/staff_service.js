@@ -5,12 +5,12 @@ angular.module('myApp').factory('StaffService', ['$http', '$q', function($http, 
     var REST_SERVICE_URI = 'http://localhost:8080/api/find/staff/';
 
     var factory = {
-        fetchStaff: fetchStaff
+        fetchStaffs: fetchStaffs
     };
 
     return factory;
     
-    function fetchStaff(user, page, count) {
+    function fetchStaffs(user, page, count) {
         var param = 'id=' + user.id + '&name=' + user.name + '&surname=' + user.surname +
                     '&patronymic=' + user.patronymic + '&post=' + user.post +
                     '&birthday=' + user.birthday + '&page=' + page + '&count=' + count;

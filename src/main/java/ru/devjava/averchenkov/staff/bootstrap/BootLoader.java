@@ -8,7 +8,6 @@ import ru.devjava.averchenkov.staff.model.entity.Staff;
 import ru.devjava.averchenkov.staff.service.structure.IStaffService;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 /**
  * Класс загрузки тестовых данных.
@@ -87,6 +86,14 @@ public class BootLoader implements ApplicationListener<ContextRefreshedEvent> {
         );
     }
 
+    /**
+     * Создает нового сотрудника.
+     * @param name имя
+     * @param surname фамилия
+     * @param patronymic отчество
+     * @param post должность
+     * @param birthday дата рождения
+     */
     public void createStaff(String name, String surname, String patronymic,
                             String post, String birthday){
         Staff staff = new Staff(

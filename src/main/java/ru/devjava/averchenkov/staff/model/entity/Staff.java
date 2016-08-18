@@ -1,7 +1,5 @@
 package ru.devjava.averchenkov.staff.model.entity;
 
-import ru.devjava.averchenkov.staff.service.parse.ServiceParse;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;

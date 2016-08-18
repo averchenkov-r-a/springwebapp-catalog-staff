@@ -8,12 +8,14 @@ import java.sql.Date;
 import java.util.regex.Pattern;
 
 /**
- * Created 17.08.2016.
+ * Сервис парсинга данных.
  *
  * @author Averchenkov R.A.
  */
 public final class ServiceParse {
-    private static final int DEFAULT_LIMIT_FIND_ALL = 10;
+    // Количество элементов на странице по умолчанию
+    private static final int DEFAULT_COUNT_IN_PAGE = 10;
+    // Максимальное количество элементов на странице
     private static final int LIMIT_COUNT_IN_PAGE = 100;
 
     private static final String REGEX_SIMPLE_STRING_DATA = "^[А-ЯЁа-яё\\-0-9a-zA-Z\\s]*$";
@@ -130,8 +132,8 @@ public final class ServiceParse {
      */
     public static Integer parseCount(String count){
         logger.debug("[parseCount] with arg: count='{}'", count);
-        Integer c = parseInteger(count, DEFAULT_LIMIT_FIND_ALL);
-        c = ((c >= 0) ? c : DEFAULT_LIMIT_FIND_ALL);
+        Integer c = parseInteger(count, DEFAULT_COUNT_IN_PAGE);
+        c = ((c >= 0) ? c : DEFAULT_COUNT_IN_PAGE);
         return (c > LIMIT_COUNT_IN_PAGE) ? LIMIT_COUNT_IN_PAGE : c;
     }
 }

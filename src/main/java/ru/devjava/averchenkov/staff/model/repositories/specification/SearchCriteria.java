@@ -1,7 +1,7 @@
 package ru.devjava.averchenkov.staff.model.repositories.specification;
 
 /**
- * Класс критерия запроса.
+ * Класс критерия для SQL запроса.
  *
  * @author Averchenkov R.A.
  */

@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.CrudRepository;
 import ru.devjava.averchenkov.staff.model.entity.Staff;
 
-
 /**
  * CRUD интерфейс доступа к данным сотрудника.
  *

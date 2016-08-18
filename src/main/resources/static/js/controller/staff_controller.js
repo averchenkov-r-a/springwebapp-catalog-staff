@@ -6,6 +6,7 @@ angular.module('myApp').controller('StaffController', ['$scope', 'StaffService',
     // массив сотрудников
     self.staffs = [];
 
+    // объект критериев поиска
     self.user = {
         id: '',
         name: '',
@@ -18,18 +19,27 @@ angular.module('myApp').controller('StaffController', ['$scope', 'StaffService',
     // массив страниц
     self.pages = [];
 
+    // номер текущей страницы
     self.page = 0;
+    // количесво элементов на станице
     self.count = 5;
     
+    // общее количесво страниц
     self.maxpage = 1;
-    self.param = '';
 
     self.navigation = navigation;
     self.search = search;
 
     search();
+    
     function search() {
-        StaffService.fetchStaff(self.user, self.page, self.count)
+        self.page = 0;
+        getStaff();
+    }
+    
+    function getStaff() {
+        StaffService
+            .fetchStaffs(self.user, self.page, self.count)
             .then(success, error);
     }
 
@@ -39,15 +49,17 @@ angular.module('myApp').controller('StaffController', ['$scope', 'StaffService',
         } else if (page >= self.maxpage) {
             page = self.maxpage - 1;
         }
-        self.page = page;
-        search(self.param);
+        if (self.page != page){
+            self.page = page;
+            getStaff();
+        }
     }
 
     function success(value) {
         console.info(value);
         self.pages = [];
         self.maxpage = value.totalPages;
-        for (var i = 0; i < value.totalPages; i++) {
+        for (var i = 0; i < self.maxpage; i++) {
             var p = {
                 number: i + 1,
                 select: (i == self.page)

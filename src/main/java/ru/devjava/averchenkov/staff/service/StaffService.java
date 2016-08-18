@@ -87,7 +87,7 @@ public class StaffService implements IStaffService {
                 }
             } else if (type.equals(String.class)){
                 if (ServiceParse.checkSimpleString(value)){
-                    specs.add(eqSpecification(field.getName(), value));
+                    specs.add(eqSpecification(field.getName(), value.trim()));
                 }
             } else if (type.equals(Date.class)){
                 ServiceParse.checkSimpleDate(value);

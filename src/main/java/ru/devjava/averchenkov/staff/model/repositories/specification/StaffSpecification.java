@@ -17,8 +17,8 @@ public class StaffSpecification implements Specification<Staff> {
     private SearchCriteria criteria;
 
     /**
-     * Возвращает спецификацию без правил.
-     * @return
+     * Создает спецификацию без правил.
+     * @return спецификацию без правил
      */
     public static StaffSpecification emptySpecification(){
         return new StaffSpecification(new SearchCriteria(null, null, null));
@@ -53,10 +53,16 @@ public class StaffSpecification implements Specification<Staff> {
                 );
             }
         } else if (criteria.getOperation().equals("like")){
-            return criteriaBuilder.like(
-                    root.get(criteria.getKey()),
-                    "%" + criteria.getValue() + "%"
-            );
+            if (root.get(criteria.getKey()).getJavaType() == String.class) {
+                return criteriaBuilder.like(
+                        criteriaBuilder.upper(root.<String>get(criteria.getKey())),
+                        ("%" + criteria.getValue() + "%").toUpperCase());
+            } else {
+                return criteriaBuilder.equal(
+                        root.get(criteria.getKey()),
+                        criteria.getValue()
+                );
+            }
         }
 
         return null;

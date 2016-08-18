@@ -10,49 +10,55 @@
             <div ng-controller="StaffController as ctrl">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default first-panel">
                         <div class="panel-heading">
                             <span class="lead">Поиск</span><br/>
                         </div>
                         <form class="form-horizontal" role="form" ng-submit="ctrl.search()">
                             <div class="form-group">
-                                <label for="input-id" class="control-label col-sm-2">ID: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.id" placeholder="1" type="text" id="input-id"/>
+                                <label for="input-id" class="control-label col-sm-3">ID:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.id"
+                                           placeholder="1" type="text" id="input-id"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input-name" class="control-label col-sm-2">Имя: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.name" placeholder="Иван" type="text" id="input-name"/>
+                                <label for="input-name" class="control-label col-sm-3">Имя:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.name"
+                                           placeholder="Иван" type="text" id="input-name"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input-surname" class="control-label col-sm-2">Фамилия: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.surname" placeholder="Подубный" type="text" id="input-surname"/>
+                                <label for="input-surname" class="control-label col-sm-3">Фамилия:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.surname"
+                                           placeholder="Подубный" type="text" id="input-surname"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input-patronymic" class="control-label col-sm-2">Отчество: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.patronymic" placeholder="Андреевич" type="text" id="input-patronymic"/>
+                                <label for="input-patronymic" class="control-label col-sm-3">Отчество:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.patronymic"
+                                           placeholder="Андреевич" type="text" id="input-patronymic"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input-post" class="control-label col-sm-2">Должность: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.post" placeholder="тестировщик" type="text" id="input-post"/>
+                                <label for="input-post" class="control-label col-sm-3">Должность:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.post"
+                                           placeholder="тестировщик" type="text" id="input-post"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="input-birthday" class="control-label col-sm-2">Дата рождения: </label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" ng-model="ctrl.user.birthday" placeholder="1985-02-10" type="text" id="input-birthday"/>
+                                <label for="input-birthday" class="control-label col-sm-3">Дата рождения:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" ng-model="ctrl.user.birthday"
+                                           placeholder="1985-02-10" type="text" id="input-birthday"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
+                                <div class="col-sm-offset-7 col-sm-2">
                                     <button type="submit" class="btn btn-default">Искать</button>
                                 </div>
                             </div>
@@ -86,20 +92,21 @@
                                 </tbody>
                             </table>
                         </div>
+                        <ul class="pagination panel-pages">
+                            <li ng-repeat="p in ctrl.pages" class="{{ (this.p.select) ? 'active' : ''}}">
+                                <a ng-bind="p.number" ng-click="ctrl.navigation(this.p.number - 1);"></a>
+                            </li>
+                        </ul>
                     </div>
                     <ul class="pager panel-pages">
                         <li class="previous">
-                            <a href="#" ng-click="ctrl.navigation(self.page - 1);">&larr; Предыдущая страница</a>
+                            <a ng-click="ctrl.navigation(self.page - 1);">&larr; Предыдущая страница</a>
                         </li>
                         <li class="next">
-                            <a href="#" ng-click="ctrl.navigation(self.page + 1);">Следующая страница &rarr;</a>
+                            <a ng-click="ctrl.navigation(self.page + 1);">Следующая страница &rarr;</a>
                         </li>
                     </ul>
-                    <ul class="pagination panel-pages">
-                        <li ng-repeat="p in ctrl.pages" class="{{ (this.p.select) ? 'active' : ''}}">
-                            <a ng-bind="p.number" href="#" ng-click="ctrl.navigation(this.p.number - 1);"></a>
-                        </li>
-                    </ul>
+
                 </div>
                 <div class="col-md-1"></div>
             </div>
@@ -107,7 +114,6 @@
 
         <script src="/static/js/libs/jquery-3.1.0.min.js"></script>
         <script src="/static/js/libs/angular.min.js"></script>
-
         <script src="/static/js/app.js"></script>
         <script src="/static/js/service/staff_service.js"></script>
         <script src="/static/js/controller/staff_controller.js"></script>

@@ -1,5 +1,22 @@
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    line-height: 1.5;
+    color: #373a3c;
+    background-color: #fff;
+}
+
+a {
+    cursor: pointer;
+}
+
+
+/* Панели */
+
+
 .panel-pages{
-    margin: 10px 0;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-bottom: 15px;
 }
 
 .search-panel{
@@ -7,9 +24,33 @@
     margin-top: 0px;
 }
 
+.first-panel{
+    margin-top: 10px;
+}
+
+
+/* Формы и ее элементы */
+
+
+label {
+    font-weight: 500;
+}
+
 .form-horizontal{
     margin-top: 10px;
 }
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.btn-default {
+    width: 100%;
+}
+
+
+/* Таблицы */
+
 
 .table-container{
     margin: 10px;
