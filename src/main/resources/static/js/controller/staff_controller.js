@@ -3,74 +3,49 @@
 angular.module('myApp').controller('StaffController', ['$scope', 'StaffService', function($scope, StaffService) {
     var self = this;
 
-    self.searchById = getStaffById;
-    self.searchByName = getStaffByName;
-
     // массив сотрудников
     self.staffs = [];
+
+    self.user = {
+        id: '',
+        name: '',
+        surname: '',
+        patronymic: '',
+        post: '',
+        birthday: ''
+    };
 
     // массив страниц
     self.pages = [];
 
     self.page = 0;
-    self.count = 2;
+    self.count = 5;
+    
     self.maxpage = 1;
-    self.method = getAllStaff;
     self.param = '';
 
-    self.flipped = flipped;
+    self.navigation = navigation;
+    self.search = search;
 
-    self.criteria = [{
-        name: 'Всех',
-        method: getAllStaff
-    }, {
-        name: 'По Id',
-        method: getStaffById
-    },{
-        name: 'По имени',
-        method: getStaffByName
-    }];
-
-    getAllStaff();
-
-    function getAllStaff() {
-        self.method = getAllStaff;
-        self.param = '';
-        StaffService.fetchAllStaff(self.page, self.count)
-            .then(success, error);
-    }
-
-    function getStaffById(id) {
-        self.method = getStaffById;
-        self.param = id;
-        StaffService.fetchStaffById(id)
-            .then(success, error);
-    }
-
-    function getStaffByName(name) {
-        self.method = getStaffByName;
-        self.param = name;
-        StaffService.fetchStaffByName(name, self.page, self.count)
-            .then(success, error);
-    }
-
+    search();
     function search() {
-
+        StaffService.fetchStaff(self.user, self.page, self.count)
+            .then(success, error);
     }
 
-    function flipped(page) {
-        console.info(page);
+    function navigation(page) {
         if (page < 0) {
             page = 0;
         } else if (page >= self.maxpage) {
             page = self.maxpage - 1;
         }
         self.page = page;
-        self.method(self.param);
+        search(self.param);
     }
 
     function success(value) {
-        console.error(value);
+        console.info(value);
+        self.pages = [];
         self.maxpage = value.totalPages;
         for (var i = 0; i < value.totalPages; i++) {
             var p = {

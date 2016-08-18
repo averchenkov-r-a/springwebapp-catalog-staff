@@ -7,6 +7,14 @@
     margin-top: 0px;
 }
 
-.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    width: 100%;
+.form-horizontal{
+    margin-top: 10px;
+}
+
+.table-container{
+    margin: 10px;
+}
+
+td, th{
+    text-align: center;
 }

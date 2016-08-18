@@ -1,5 +1,7 @@
 package ru.devjava.averchenkov.staff.model.entity;
 
+import ru.devjava.averchenkov.staff.service.parse.ServiceParse;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -12,7 +14,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "Staff")
 public class Staff implements Serializable {
-    private long stfId;
+    private Long stfId;
     private String stfName;
     private String stfSurname;
     private String stfPatronymic;
@@ -22,10 +24,10 @@ public class Staff implements Serializable {
     @Id
     @Column(name = "stf_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getStfId() {
+    public Long getStfId() {
         return stfId;
     }
-    public void setStfId(long stfId) {
+    public void setStfId(Long stfId) {
         this.stfId = stfId;
     }
 
@@ -92,7 +94,7 @@ public class Staff implements Serializable {
 
         Staff staff = (Staff) o;
 
-        if (stfId != staff.stfId) return false;
+        if (stfId != null ? !stfId.equals(staff.stfId) : staff.stfId != null) return false;
         if (stfName != null ? !stfName.equals(staff.stfName) : staff.stfName != null) return false;
         if (stfSurname != null ? !stfSurname.equals(staff.stfSurname) : staff.stfSurname != null) return false;
         if (stfPatronymic != null ? !stfPatronymic.equals(staff.stfPatronymic) : staff.stfPatronymic != null)
@@ -104,7 +106,7 @@ public class Staff implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = (int) (stfId ^ (stfId >>> 32));
+        int result = stfId != null ? stfId.hashCode() : 0;
         result = 31 * result + (stfName != null ? stfName.hashCode() : 0);
         result = 31 * result + (stfSurname != null ? stfSurname.hashCode() : 0);
         result = 31 * result + (stfPatronymic != null ? stfPatronymic.hashCode() : 0);
